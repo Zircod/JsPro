@@ -1,0 +1,24 @@
+.wrapper {
+    padding-left: calc(50% - 200px);
+    padding-right: calc(50% - 200px);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: flex-start;
+}
+
+.btn {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid blue;
+    background-color: white;
+    color: blue;
+    transition: 0.3ms all;
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: blue;
+    color: white;
+    cursor: pointer;
+}

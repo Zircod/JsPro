@@ -87,6 +87,7 @@ img {
     box-sizing: border-box;
     color: white;
     margin-top: 10px;
+    transition: 0.3ms all;
 }
 
 .buy-btn {
@@ -104,5 +105,33 @@ img {
 
 .btn:hover,
 .btn:focus {
-    opacity: 0.7;
+    background-color: transparent;
+    color: #1e9aa0;
+    border: 1px solid #1e9aa0;
+}
+
+.btn-search {
+    background-color: transparent;
+    border: none;
+    color: black;
+    font-size: 1.2em;
+    position: absolute;
+    bottom: 5px;
+    right: 0;
+}
+.search-form{
+    position: relative;
+    margin-right: 50px;
+    display: inline-block;
+}
+.search-field:focus{
+    outline: none;
+}
+.search-field {
+    box-sizing: border-box;
+    width: 200px;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #1e9aa0;;
 }
