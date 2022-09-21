@@ -13,29 +13,27 @@
         <h1 class="header-title">eShop</h1>
         <div class="basket-wrp">
 
-            <form action="#" class="search-form" @submit.prevent="filter">
-                <input type="text" class="search-field" v-model="userSearch">
-                <button class="btn-search" type="submit">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
+                <form action="#" class="search-form" @submit.prevent="filter">
+                    <input type="text" class="search-field" v-model="userSearch">
+                    <button class="btn-search" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
 
-            <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
+                <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
 
-            <div class="basket" v-show="showCart">
-                <p v-if="!cartItems.length">Cart is empty</p>
-                <div class="basket-item" v-for="item of cartItems" :key="item.id_product">
-
-                    <p>{{ item.product_name }}<</p>
-                    <p>{{ item.quantity }} шт.</p>
-                    <p>$ {{ item.price }} шт.</p>
-                    <div class="bnt-wrp">
-                        <div class="product-price">{{ item.quantity*item.price }}</div>
-                        <button class="delete-btn btn" @click="remove(item)">x</button>
+                <div class="basket-active" v-show="showCart">
+                    <p v-if="!cartItems.length">Cart is empty</p>
+                    <div class="basket-item" v-for="item of cartItems">
+                        <p>{{ item.product_name }}</p>
+                        <p>{{ item.quantity }} шт.</p>
+                        <p>$ {{ item.price }} шт.</p>
+                        <div class="bnt-wrp">
+                            <div class="product-price">{{ item.quantity*item.price }}</div>
+                            <button class="delete-btn btn" @click="remove(item)">x</button>
+                        </div>
                     </div>
-
                 </div>
-            </div>
         </div>
     </header>
     <main>
@@ -49,8 +47,8 @@
         </div>
     </main>
 </div>
-    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
-    <script src="js/main.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.8/dist/vue.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

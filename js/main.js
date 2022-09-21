@@ -9,9 +9,8 @@ const app = new Vue({
     cartUrl: '/getBasket.json',
     cartItems: [],
     filtered: [],
-    imgCart: 'https://via.placeholder.com/50x100',
     products: [],
-    imgProduct: 'https://via.placeholder.com/200x150'
+    imgProduct: 'https://i.ibb.co/bvjZbP9/black-friday-elements-assortment.jpg'
   },
   methods: {
     getJson(url){
@@ -20,36 +19,147 @@ const app = new Vue({
       .catch(error => console.log(error))
     },
 
-    filter(){
+    addProduct(item) {
+      this.getJson(`${API}/addToBasket.json`)
+      .then(data => {
+        if(data.result === 1) {
+          let find = this.cartItems.find(el => el.id_product === item.id_product);
+          if(find) {
+            find.quantity++;
+          } else {
+            const prod = Object.assign({quantity: 1}, item);//создание нового объекта на основе двух, указанных в параметрах
+            this.cartItems.push(prod)
+          }
+        }
+      })
+    },
+    remove(item) {
+      this.getJson(`${API}/deleteFromBasket.json`)
+      .then(data => {
+        if(data.result === 1) {
+          if(item.quantity > 1) {
+            item.quantity--;
+          } else {
+            this.cartItems.splice(this.cartItems.indexOf(item), 1);
+          }
+        }
+      })
+    },
+
+    filter() {
       let regexp = new RegExp(this.userSearch, 'i');
       this.filtered =  this.products.filter(el => regexp.test(el.product_name));
     }
   },
 
-  mounted(){
+  mounted() {
     this.getJson(`${API + this.cartUrl}`)
-    .then(data => {
-      for (let item of data.contents){
-        this.cartItems.push(item);
-      }
+      .then(data => {
+        for (let item of data.contents){
+          this.cartItems.push(item);
+        }
     });
     this.getJson(`${API + this.catalogUrl}`)
-    .then(data => {
-      for (let item of data){
-        this.data.products.push(item);
-        this.data.filtered.push(item);
-      }
+      .then(data => {
+        for (let item of data){
+          this.products.push(item);
+          this.filtered.push(item);
+        }
     });
     this.getJson(`getProducts.json`)
-    .then(data => {
-      for(let item of data){
-        this.products.push(item);
-        this.filtered.push(item);
-      }
-    })
+      .then(data => {
+        for(let item of data){
+          this.products.push(item);
+          this.filtered.push(item);
+        }
+      })
   }
-
 });
+
+
+//
+//
+// function service(url) {
+//   return fetch(url)
+//   .then((res) => res.json())
+// }
+//
+// const app = new Vue({
+//   el: '#app',
+//   data: {
+//     items: [],
+//     //filteredItems: [],
+//     searchValue: '',
+//
+//
+//     // userSearch: '',
+//     // showCart: false,
+//     // catalogUrl: '/catalogData.json',
+//     // cartUrl: '/getBasket.json',
+//     // cartItems: [],
+//     // filtered: [],
+//     // imgCart: 'https://via.placeholder.com/50x100',
+//     // products: [],
+//     // imgProduct: 'https://via.placeholder.com/200x150'
+//   },
+//   mounted() {
+//    service(GET_GOODS_ITEMS)
+//     .then(data => {
+//       this.items = data;
+//       return data;
+//     });
+//
+//     // this.getJson(`${API + this.catalogUrl}`)
+//     // .then(data => {
+//     //   for (let item of data){
+//     //     this.data.products.push(item);
+//     //     this.data.filtered.push(item);
+//     //   }
+//     // });
+//     // this.getJson(`getProducts.json`)
+//     // .then(data => {
+//     //   for(let item of data){
+//     //     this.products.push(item);
+//     //     this.filtered.push(item);
+//     //   }
+//     // })
+//   },
+//
+//   methods: {
+//     fetchGoods() {
+//       service(GET_GOODS_ITEMS).then((data) => {
+//         this.items = data;
+//         this.filteredItems = data;
+//       });
+//     },
+//
+//     // getJson(url){
+//     //   return fetch(url)
+//     //   .then((res) => res.json())
+//     // },
+//
+//     // filter(){
+//     //   let regexp = new RegExp(this.userSearch, 'i');
+//     //   this.filtered =  this.products.filter(el => regexp.test(el.product_name));
+//     // }
+//   },
+//
+//
+//
+//   computed: {
+//     calcSum() {
+//       return this.goods.reduce((accum, item ) => accum + item.price, 0)
+//     },
+//
+//     filterItems() {
+//       this.filteredItems = this.items.filter(({ product_name }) => {
+//         return product_name.match(new RegExp(this.searchValue, 'gui'))
+//       })
+//     }
+//
+//   }
+//
+// });
 
 // class ProductList {
 //   constructor(container= '.products', url = '/catalogData.json') {
