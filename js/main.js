@@ -10,7 +10,8 @@ const app = new Vue({
     cartItems: [],
     filtered: [],
     products: [],
-    imgProduct: 'https://i.ibb.co/bvjZbP9/black-friday-elements-assortment.jpg'
+    imgProduct: 'https://i.ibb.co/bvjZbP9/black-friday-elements-assortment.jpg',
+    error: false
   },
   methods: {
     getJson(url){
@@ -46,8 +47,8 @@ const app = new Vue({
       })
     },
 
-    filter() {
-      let regexp = new RegExp(this.userSearch, 'i');
+    filter(userSearch) {
+      let regexp = new RegExp(userSearch, 'i');
       this.filtered =  this.products.filter(el => regexp.test(el.product_name));
     }
   },
