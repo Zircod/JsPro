@@ -11,19 +11,21 @@
 <div id="app">
     <header class="header">
         <h1 class="header-title">eShop</h1>
-        <div class="basket-wrp">
-                <search></search>
+        <div class="cart basket-wrp">
+            <search></search>
 
-                <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>
+            <cart ref="cart"></cart>
+<!--                <button class="btn-cart" type="button" @click="showCart = !showCart">Корзина</button>-->
 
-                <cart :cart-items="cartItems"
-                      :visibility="showCart"
-                      @remove="remove">
-                </cart>
+<!--                <cart :cart-items="cartItems"-->
+<!--                      :visibility="showCart"-->
+<!--                      @remove="remove">-->
+<!--                </cart>-->
         </div>
     </header>
     <main>
-        <products :products="filtered" :img="imgProduct" @add-product="addProduct"></products>
+        <products ref="products"></products>
+<!--        <products :products="filtered" :img="imgProduct" @add-product="addProduct"></products>-->
     </main>
 </div>
 <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
