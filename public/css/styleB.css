@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.bg-light {
+  background: none !important;
+}
+
+.navbar-expand-lg .navbar-collapse {
+  justify-content: flex-end;
+}
+
+.logo {
+  height: 60px;
+  padding: 10px;
+}
+
+.nav-link {
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.heading_menu {
+  text-align: center;
+  padding-top: 25px;
+}
+
+.row {
+  justify-content: center;
+  padding-top: 25px;
+}
+
+.card {
+  margin: 25px;
+}
+
+.card-body {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.btn-outline-primary {
+  color: gray;
+  border-color: grey;
+}
+
+.footer {
+  height: 75px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 14px;
+  text-align: center;
+  padding-top: 22px;
+}
+
+ul {
+  padding: 0;
+}
+
+.footer-item {
+  list-style-type: none;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  padding-bottom: 10px;
+}
+
+@media (max-width: 1024px) {
+  .nav-link {
+    font-size: 13px;
+    /*вычетание из переменной*/
+    text-transform: lowercase;
+  }
+
+  .row {
+    padding-top: 15px;
+  }
+
+  .card {
+    margin: 10px;
+  }
+}
+
