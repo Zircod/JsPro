@@ -1,0 +1,27 @@
+[
+  {
+    "id_product": 1,
+    "product_name": "pizza-1",
+    "price": 24,
+    "img": "http://localhost:3000/pizza-1.jpg"
+
+  },
+  {
+    "id_product": 2,
+    "product_name": "pizza-2",
+    "price": 20,
+    "img": "http://localhost:3000/pizza-2.jpg"
+  },
+  {
+    "id_product": 3,
+    "product_name": "pizza-3",
+    "price": 25,
+    "img": "http://localhost:3000/pizza-3.jpg"
+  },
+  {
+    "id_product": 4,
+    "product_name": "pizza-4",
+    "price": 30,
+    "img": "http://localhost:3000/pizza-4.jpg"
+  }
+]
